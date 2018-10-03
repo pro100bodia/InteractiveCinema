@@ -1,2 +1,2 @@
 # in_the_shadow
-game
+chto tut takoe wtf
