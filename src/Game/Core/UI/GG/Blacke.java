@@ -57,7 +57,7 @@ public class Blacke extends BasicGame implements MouseListener {
     }
     
     public void moveTo(float x) {
-    		moveTo = x;		
+    		moveTo = x;
     		
     		if(moveTo > this.x)
     		{
@@ -70,7 +70,7 @@ public class Blacke extends BasicGame implements MouseListener {
     		}
     	
     	}
-    
+
     public float getX() {return this.x;}
     public void setX(float x) { this.x = x;}
 }
