@@ -55,13 +55,11 @@ public class HouseGG extends GameState implements MouseListener {
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
 
     		blacke.update(gameContainer, i);
-    		if(blacke.getX()<=(int)(421*0.71)) {
-    			((ChangeStateDoor) toTheStreet).open();
+    		if(blacke.getX()<=(int)(391*0.71)) {
     			blacke.setX(blacke.getX()+5);
     			blacke.moveTo(blacke.getX());
     		}
-    		if(blacke.getX() >=(int)(1476*0.71)) {
-    			((ChangeStateDoor) toTheBedroom).open();
+    		if(blacke.getX() >=(int)(1406*0.71)) {
     			blacke.setX(blacke.getX()-5);
     			blacke.moveTo(blacke.getX());
     		}
