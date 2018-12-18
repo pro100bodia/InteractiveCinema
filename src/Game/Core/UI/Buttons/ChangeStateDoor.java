@@ -52,4 +52,12 @@ public class ChangeStateDoor extends ChangeStateButton {
     public void open() {
     	basedGame.enterState(state, new FadeOutTransition(), new FadeInTransition());
     }
+	
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 }
