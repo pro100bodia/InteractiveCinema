@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 public class Button extends MouseOverArea implements ButtonsAndControls {
     private boolean wasHere=true, singleClick=true;
     protected boolean clicked=false;
-    private int x,y;
+    protected int x,y;
     private String label;
     protected Image focusImage,image;
     private Sound sound;
