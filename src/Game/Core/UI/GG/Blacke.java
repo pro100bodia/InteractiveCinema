@@ -71,6 +71,13 @@ public class Blacke extends BasicGame implements MouseListener {
     	
     	}
 
-    public float getX() {return this.x;}
-    public void setX(float x) { this.x = x;}
+    public float getX() {
+		return this.x;
+	}
+    public int getWidth(){
+		return ggImage.getWidth();
+	}
+    public void setX(float x) {
+    	this.x = x;
+    }
 }
