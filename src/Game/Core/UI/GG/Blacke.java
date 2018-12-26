@@ -8,21 +8,22 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Blacke extends BasicGame implements MouseListener {
 	
-	private Image ggImageLeft ;
-	private Image ggImageRight ;
-	private Image  ggImage;
 	
-	private boolean isItMove;
+	private Image  ggImage; // Спрайт ГГ в положении стоя
 	
-	private float x, y, moveTo;
+	private boolean isItMove; // Флаг находится ли герой в движении
+	
+	private float x, y, moveTo; // Координаты спрайта ГГ и куда кликнули мышкой относительно оси х
+	
 	GameContainer gameContainer;
 	
-	SpriteSheet  moveToLeft;
-	SpriteSheet  moveToRight;
-	Image[] playerLeft = new Image[6] ;
-	Image[] playerRight = new Image[6];
+	SpriteSheet  moveToLeft; // Атлас движений героя влево
+	SpriteSheet  moveToRight; // Атлас движений героя вправо
+	
+	Image[] playerLeft = new Image[6] ; //Массив для хранения изображений с атласа для анимации движения влево
+	Image[] playerRight = new Image[6];//Массив для хранения изображений с атласа для анимации движения вправо
 
-	Animation aTommy;
+	Animation aTommy; // Объект для анимации
 	
 	public Blacke(String title, GameContainer gameContainer) {
 		super("GG");
@@ -31,10 +32,9 @@ public class Blacke extends BasicGame implements MouseListener {
 		y=(int)( 464*0.71);
 		moveTo = x;
 		try {
-			ggImageLeft = new Image("Game/res/img/UI/blacke.png").getScaledCopy((int)( 168*0.71), (int)( 422*0.71));
-			ggImageRight = new Image("Game/res/img/UI/blackeRight.png").getScaledCopy((int)( 168*0.71), (int)( 422*0.71));
-			
+			// Загружаем атлас , устанавливаем размер кадра
 			moveToLeft = new SpriteSheet("Game/res/img/UI/GGsketch_5x2.png", 183, 397);
+			//Заполняем массив изображений кадрами из атласа, перемещаемся как по двумерному массиву
 	    	         playerLeft[0] = moveToLeft.getSprite(0,0);
 	    	         playerLeft[1] = moveToLeft.getSprite(1,0);
 	    	         playerLeft[2] = moveToLeft.getSprite(2,0);
@@ -50,11 +50,13 @@ public class Blacke extends BasicGame implements MouseListener {
 	    	         playerRight[4] = moveToRight.getSprite(0,1);
 	    	         playerRight[5] = moveToRight.getSprite(1,1);
 	    	 
-	    	         
+	    	         //Задаем первоначальный спрайт для ГГ
 	    	         ggImage = moveToLeft.getSprite(1,1);
 	    	         
 	    	         
 	    	    isItMove = false;
+	    	    
+	    	    //Передаем в анимацию массив изображений, задержку переключения, флаг для включения анимации
 	    	    aTommy = new Animation(playerLeft,300, true);
 			
 		    
@@ -79,6 +81,8 @@ public class Blacke extends BasicGame implements MouseListener {
     @Override
     public void render(GameContainer gameContainer, Graphics g) throws SlickException {
     	
+    	//Если активен флаг на движение рисуем анимацию, иначе статичный спрайт
+    	
     	if(isItMove == true) {
     	aTommy.draw(x,y);
     	} else {
@@ -88,6 +92,8 @@ public class Blacke extends BasicGame implements MouseListener {
     @Override
     public void update(GameContainer gameContainer, int t) throws SlickException {
     	
+    	
+    	//Двигаем ГГ относительно оси Х попутно проверяя условие остановки
     	if(x < moveTo) {
     	this.x +=5;
     		if(x >= moveTo) {
@@ -104,7 +110,10 @@ public class Blacke extends BasicGame implements MouseListener {
     	
     }
     
+    
+    //Метод определяет в какую сторону движется персонаж и заменяет соответствующие спрайты
     public void moveTo(float x) {
+    		
     		moveTo = x;
     		
     		if(moveTo > this.x)
