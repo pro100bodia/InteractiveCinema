@@ -59,6 +59,7 @@ public class HouseGG extends GameState implements MouseListener {
     			((ChangeStateDoor) toTheStreet).open();
     			blacke.setX(blacke.getX()+5);
     			blacke.moveTo(blacke.getX());
+    			
     		}
     		if(blacke.getX() >=(int)(1476*0.71)) {
     			((ChangeStateDoor) toTheBedroom).open();
@@ -70,7 +71,7 @@ public class HouseGG extends GameState implements MouseListener {
 
     
     @Override
-    public void mouseClicked(int button, int x, int y, int clickCount) {      
+    public void mouseClicked(int button, int x, int y, int clickCount) { 
         blacke.moveTo(x);
     }
 }
