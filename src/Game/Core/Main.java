@@ -16,7 +16,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import java.util.Properties;
 
 public final class Main extends StateBasedGame {
-    public final static int FIRST_START=-1, MENU=0, NEWGAME=1, HOUSE = 2, STREET = 3, BEDROOM = 4;
+    public final static int FIRST_START=-1, MENU=0, NEWGAME=1, HOUSE = 2, STREET = 3, BEDROOM = 4, PARK = 5;
     private static int width, height;
     private static GameSettings settings;
 
@@ -28,6 +28,7 @@ public final class Main extends StateBasedGame {
         this.addState(new HouseGG(HOUSE));
         this.addState(new StreetDummy(STREET));
         this.addState(new BedroomDummy(BEDROOM));
+        this.addState(new Park(PARK));
         this.enterState(-1);//временно установлено статически
 
 }
