@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 
 public class StreetDummy extends GameState {
     private int id;
-    private ChangeStateButton goBack;
+    private ChangeStateButton goBack, goPark;
     private Image background;
 
     public StreetDummy(int id) {
@@ -31,6 +31,7 @@ public class StreetDummy extends GameState {
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
+        goPark = new ChangeStateButton(gameContainer, new Image("Game/res/img/UI/mainButton.png"), 300, 100, 5, "Park", stateBasedGame, resourceBundle);
         goBack = new ChangeStateButton(gameContainer, new Image("Game/res/img/UI/mainButton.png"),100,100,2,"street",stateBasedGame,resourceBundle);
         background = new Image("Game/res/img/Street.png").getScaledCopy((int)(1920*0.71),(int)(1080*0.71));
     }
