@@ -48,11 +48,19 @@ public class Blacke extends BasicGame implements MouseListener {
     @Override
     public void update(GameContainer gameContainer, int t) throws SlickException {
     	
-    	if(x < moveTo) 
-    	this.x +=5;
-    	
-    	if(x > moveTo)
-        this.x -=5;
+    	if(x < moveTo) {
+			if (moveTo - x <= 5)
+				this.x = moveTo;
+			else
+				this.x += 5;
+		}
+
+    	if(x > moveTo){
+        	if (x - moveTo <= 5)
+        		x = moveTo;
+        	else
+    			this.x -=5;
+    	}
     	
     }
     
