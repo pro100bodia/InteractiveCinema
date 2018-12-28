@@ -11,20 +11,19 @@ public class Blacke extends BasicGame implements MouseListener {
 	private Image ggImageLeft ;
 	private Image ggImageRight ;
 	private Image  ggImage;
-	
 	private float x, y, moveTo;
 	GameContainer gameContainer;
 	
-	public Blacke(String title, GameContainer gameContainer) {
+	public Blacke(int x, String title, GameContainer gameContainer) {
 		super("GG");
 		this.gameContainer=gameContainer;
-		x=(int)( 885*0.71);
+		this.x = x;
 		y=(int)( 464*0.71);
 		moveTo = x;
 		try {
 			ggImageLeft = new Image("Game/res/img/UI/blacke.png").getScaledCopy((int)( 168*0.71), (int)( 422*0.71));
 			ggImageRight = new Image("Game/res/img/UI/blackeRight.png").getScaledCopy((int)( 168*0.71), (int)( 422*0.71));
-			ggImage = ggImageLeft;
+			ggImage = ggImageRight;
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -12,18 +12,20 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
 public class ChangeStateDoor extends ChangeStateButton {
-	
-	 private int state;
-	 private StateBasedGame basedGame;
-	
+
+    private int state;
+    private StateBasedGame basedGame;
+
     Image image, focusImage;
     public ChangeStateDoor(GUIContext container, Image image, Image focusImage, int x, int y,int state, String text, StateBasedGame game, ResourceBundle bundle) {
-    	super(container, image, x, y, state, text,game, bundle);
-    	this.state = state;
+        super(container, image, x, y, state, text,game, bundle);
+        this.state = state;
         this.basedGame = game;
         this.image = image;
         this.focusImage = focusImage;
-        
+        this.x = x;
+        this.y = y;
+
         super.setMouseOverImage(focusImage);
     }
 
@@ -35,8 +37,8 @@ public class ChangeStateDoor extends ChangeStateButton {
     @Override
     public void onClick() {
         //super.onClick();
-        
-       // 
+
+        //
     }
 
     @Override
@@ -48,15 +50,17 @@ public class ChangeStateDoor extends ChangeStateButton {
     public void setMouseOverImage(Image image) {
         super.setMouseOverImage(this.focusImage);
     }
-    
+
     public void open() {
-    	basedGame.enterState(state, new FadeOutTransition(), new FadeInTransition());
+        basedGame.enterState(state, new FadeOutTransition(), new FadeInTransition());
     }
-	
+
+    @Override
     public int getX() {
         return x;
     }
 
+    @Override
     public int getY() {
         return y;
     }
