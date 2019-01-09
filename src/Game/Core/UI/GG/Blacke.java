@@ -8,8 +8,11 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Blacke extends BasicGame implements MouseListener {
 	
+	private float scale = (float)0.71;
 	
 	private Image  ggImage; // Спрайт ГГ в положении стоя
+	
+	private Image scaledLeft, scaledRight;
 	
 	private boolean isItMove; // Флаг находится ли герой в движении
 	
@@ -23,17 +26,18 @@ public class Blacke extends BasicGame implements MouseListener {
 	Image[] playerLeft = new Image[6] ; //Массив для хранения изображений с атласа для анимации движения влево
 	Image[] playerRight = new Image[6];//Массив для хранения изображений с атласа для анимации движения вправо
 
-	Animation aTommy; // Объект для анимации
+	Animation left,right, currentMove; // Объект для анимации
 	
 	public Blacke(String title, GameContainer gameContainer) {
 		super("GG");
 		this.gameContainer=gameContainer;
-		x=(int)( 885*0.71);
-		y=(int)( 464*0.71);
+		x=(int)( 885*scale);
+		y=(int)( 464*scale);
 		moveTo = x;
 		try {
 			// Загружаем атлас , устанавливаем размер кадра
-			moveToLeft = new SpriteSheet("Game/res/img/UI/GGsketch_5x2.png", 183, 397);
+			scaledLeft = new Image("Game/res/img/UI/GGsketch_5x2.png");
+			moveToLeft = new SpriteSheet(scaledLeft.getScaledCopy((int)(scaledLeft.getWidth()*scale), (int)(scaledLeft.getHeight()*scale)), (int)(183*scale), (int)(397*scale));
 			//Заполняем массив изображений кадрами из атласа, перемещаемся как по двумерному массиву
 	    	         playerLeft[0] = moveToLeft.getSprite(0,0);
 	    	         playerLeft[1] = moveToLeft.getSprite(1,0);
@@ -41,8 +45,9 @@ public class Blacke extends BasicGame implements MouseListener {
 	    	         playerLeft[3] = moveToLeft.getSprite(3,0);
 	    	         playerLeft[4] = moveToLeft.getSprite(4,0);
 	    	         playerLeft[5] = moveToLeft.getSprite(0,1);
-	    	         
-	    	moveToRight = new SpriteSheet("Game/res/img/UI/GGsketchreverse_5x2.png", 183, 397);
+	    	
+	    	scaledRight = new Image("Game/res/img/UI/GGsketchreverse_5x2.png");
+	    	moveToRight = new SpriteSheet(scaledRight.getScaledCopy((int)(scaledRight.getWidth()*scale), (int)(scaledRight.getHeight()*scale)), (int)(183*scale), (int)(397*scale));
 	    	         playerRight[0] = moveToRight.getSprite(1,0);
 	    	         playerRight[1] = moveToRight.getSprite(2,0);
 	    	         playerRight[2] = moveToRight.getSprite(3,0);
@@ -57,7 +62,10 @@ public class Blacke extends BasicGame implements MouseListener {
 	    	    isItMove = false;
 	    	    
 	    	    //Передаем в анимацию массив изображений, задержку переключения, флаг для включения анимации
-	    	    aTommy = new Animation(playerLeft,300, true);
+	    	    
+	    	    left= new Animation(playerLeft,300, true);
+	    	    right= new Animation(playerRight,300, true);
+	    	    currentMove= left;
 			
 		    
 		} catch (SlickException e) {
@@ -84,7 +92,7 @@ public class Blacke extends BasicGame implements MouseListener {
     	//Если активен флаг на движение рисуем анимацию, иначе статичный спрайт
     	
     	if(isItMove == true) {
-    	aTommy.draw(x,y);
+    	currentMove.draw(x,y);
     	} else {
     		ggImage.draw(x,y);
     	}
@@ -116,18 +124,18 @@ public class Blacke extends BasicGame implements MouseListener {
     		
     		moveTo = x;
     		
-    		if(moveTo > this.x)
+    		if(moveTo > this.x + 119)
     		{
     			isItMove = true;
     			ggImage = moveToRight.getSprite(0,0);
-    			this.aTommy = new Animation(playerRight,300, true);
+    			this. currentMove= right;
     		}
     		
     		if(moveTo < this.x)
     		{
     			isItMove = true;
     			ggImage = moveToLeft.getSprite(1,1);
-    			this.aTommy = new Animation(playerLeft,300, true);
+    			this. currentMove = left;
     		}
     	
     	}
