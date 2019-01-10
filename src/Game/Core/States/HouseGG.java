@@ -84,12 +84,16 @@ public class HouseGG extends GameState implements MouseListener {
     	blacke.moveTo(x);
 
         if (blacke.getX() <= toTheStreet.getX() + 119 && x >= toTheStreet.getX() && x <= toTheStreet.getX() + 109 &&
-                y >= toTheStreet.getY() && y <= toTheStreet.getY() + 393)
+                y >= toTheStreet.getY() && y <= toTheStreet.getY() + 393) {
         	((ChangeStateDoor) toTheStreet).open();
+        	blacke.setIsItMove(false);
+        }
 
         if (blacke.getX() >= toTheBedroom.getX() - blacke.getWidth() - 10 && x >= toTheBedroom.getX() && x <= toTheBedroom.getX() + 109 &&
-                y >= toTheBedroom.getY() && y <= toTheBedroom.getY() + 393)
+                y >= toTheBedroom.getY() && y <= toTheBedroom.getY() + 393) {
         	((ChangeStateDoor) toTheBedroom).open();
+        	blacke.setIsItMove(false);
+        }
 
     }
 }
