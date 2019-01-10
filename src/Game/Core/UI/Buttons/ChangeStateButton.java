@@ -27,7 +27,7 @@ public class ChangeStateButton extends Button {
     }
 
     public ChangeStateButton(GUIContext context,int x,int y, Image image, Image focusedImage, StateBasedGame game, int toState,float scalex, float scaley){
-     //   super(context,image,(int)(x*(1/scalex)),(int)(y*(1/scaley/)));
+        //   super(context,image,(int)(x*(1/scalex)),(int)(y*(1/scaley/)));
         super(context,image,x,y);
         this.state = toState;
         this.basedGame=game;
@@ -53,7 +53,7 @@ public class ChangeStateButton extends Button {
 
     @Override
     public void render(GUIContext container, Graphics g) {
-       // g.scale(1/this.scalex,1/this.scaley);
+        // g.scale(1/this.scalex,1/this.scaley);
         if(scalex!=0) {
             this.setX(this.getX() * (1/scalex));
             this.setY(this.getY() * (1/scaley));

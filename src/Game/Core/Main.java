@@ -1,11 +1,6 @@
 package Game.Core;
 
-import Game.Core.States.BedroomDummy;
-import Game.Core.States.FirstStart;
-import Game.Core.States.Game;
-import Game.Core.States.HouseGG;
-import Game.Core.States.MainMenu;
-import Game.Core.States.StreetDummy;
+import Game.Core.States.*;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;

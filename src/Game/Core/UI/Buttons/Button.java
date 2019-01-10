@@ -46,21 +46,21 @@ public class Button extends MouseOverArea implements ButtonsAndControls {
     }
 
     public Button (GUIContext container, Image image, Image fImage, int x, int y){
-       super(container, image, x, y);
-       this.focusImage=fImage;
-       try {
-           sound = new Sound("/src/Game/res/Sounds/buttonFocus.ogg");
-       }
-       catch (SlickException e){e.printStackTrace();}
-       super.setMouseOverImage(fImage);
-       createFont();
+        super(container, image, x, y);
+        this.focusImage=fImage;
+        try {
+            sound = new Sound("/src/Game/res/Sounds/buttonFocus.ogg");
+        }
+        catch (SlickException e){e.printStackTrace();}
+        super.setMouseOverImage(fImage);
+        createFont();
     }
 
 
     public void setScale(float xF, float yF){
         this.scalex = xF;
         this.scaley = yF;
- //       this.x = (int)(this.x*(1/xF));
+        //       this.x = (int)(this.x*(1/xF));
 //        this.y = (int)(this.y*(1/yF));
     }
 
@@ -107,8 +107,8 @@ public class Button extends MouseOverArea implements ButtonsAndControls {
 
 
         if(label!=null){
-           g.setColor(Color.white);
-           g.drawString(label,this.x+20,this.y+25);
+            g.setColor(Color.white);
+            g.drawString(label,this.x+20,this.y+25);
         }
         if(isMouseOver()&& Mouse.isButtonDown(Input.MOUSE_LEFT_BUTTON)){
             if (singleClick)
@@ -132,8 +132,6 @@ public class Button extends MouseOverArea implements ButtonsAndControls {
         return super.isMouseOver();
     }
 
-
-
     @Override
     public void mouseClicked(int button, int x, int y, int clickCount) {
         super.mouseClicked(button, x, y, clickCount);
@@ -156,7 +154,7 @@ public class Button extends MouseOverArea implements ButtonsAndControls {
     }
 
     public void onFocus(){
-      sound.play();
+        sound.play();
     }
 
     public boolean isClicked(){return clicked;}

@@ -35,7 +35,7 @@ public class HouseGG extends GameState implements MouseListener {
         // toTheStreet = new ChangeStateDoor(gameContainer,new Image("Game/res/img/UI/HouseGGDoor.png").getScaledCopy(110,400),new Image("/src/Game/res/img/UI/HouseGGDoorActive1.png").getScaledCopy(125,397),210,255,3,"toTheStreet",stateBasedGame,resourceBundle);
         toTheStreet = new ChangeStateDoor(gameContainer,new Image("Game/res/img/UI/HouseGGDoor.png").getScaledCopy(109,403),new Image("/src/Game/res/img/UI/HouseGGDoorActive1.png").getScaledCopy((int)(176*0.71),(int)(558*0.71)),(int)(295*0.71),(int)(358*0.71),3,"toTheStreet",stateBasedGame,resourceBundle);
         toTheBedroom = new ChangeStateDoor(gameContainer,new Image("Game/res/img/UI/HouseGGDoor2.png").getScaledCopy(109,393),new Image("Game/res/img/UI/HouseGGDoor2Active.png").getScaledCopy((int)(155*0.71),(int)(562*0.71)),(int)(1469*0.71),(int)(337*0.71),4,"toTheBedroom",stateBasedGame,resourceBundle);
-        blacke = new Blacke("GG", gameContainer);
+        blacke = new Blacke((int)(885*0.71),"GG", gameContainer);
 
     }
 

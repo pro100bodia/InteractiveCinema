@@ -41,6 +41,7 @@ public class StreetDummy extends GameState {
         graphics.drawString("Street", 500,50);
         graphics.drawImage(background,0,0);
         goBack.redraw(gameContainer,graphics,resourceBundle);
+        goPark.redraw(gameContainer,graphics,resourceBundle);
         
 
 
