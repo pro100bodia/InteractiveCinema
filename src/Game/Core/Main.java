@@ -38,8 +38,6 @@ public final class Main extends StateBasedGame {
         AppGameContainer appc;
         try{
             appc = new AppGameContainer(new Main("GAME"));
-            width = appc.getScreenWidth();
-            height = appc.getScreenHeight();
 
             appc.setDisplayMode(WIDTH, HEIGHT ,settings.isFullscreen());
             appc.setTargetFrameRate(60);
