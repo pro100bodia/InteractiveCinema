@@ -7,12 +7,9 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
-
-import java.util.Properties;
-
 public final class Main extends StateBasedGame {
     public final static int FIRST_START=-1, MENU=0, NEWGAME=1, HOUSE = 2, STREET = 3, BEDROOM = 4, PARK = 5;
-    private static int width, height;
+    public static final int WIDTH = 1366, HEIGHT = 768;
     private static GameSettings settings;
 
     private Main(String name) {
@@ -29,15 +26,12 @@ public final class Main extends StateBasedGame {
 }
 
     public static void main(String[] args) {
-
         settings=new GameSettings();
         AppGameContainer appc;
         try{
             appc = new AppGameContainer(new Main("GAME"));
-            width = appc.getScreenWidth();
-            height = appc.getScreenHeight();
 
-            appc.setDisplayMode(1366, 768 ,settings.isFullscreen());
+            appc.setDisplayMode(WIDTH, HEIGHT, settings.isFullscreen());
             appc.setTargetFrameRate(60);
             appc.start();
 
