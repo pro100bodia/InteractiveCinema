@@ -18,6 +18,8 @@ public class Blacke extends BasicGame implements MouseListener {
 	
 	private float x, y, moveTo; // Координаты спрайта ГГ и куда кликнули мышкой относительно оси х
 	
+	private int width, height;
+	
 	GameContainer gameContainer;
 	
 	SpriteSheet  moveToLeft; // Атлас движений героя влево
@@ -31,6 +33,10 @@ public class Blacke extends BasicGame implements MouseListener {
 	public Blacke(String title, GameContainer gameContainer) {
 		super("GG");
 		this.gameContainer=gameContainer;
+		
+		width = (int) (Main.WIDTH / 9.1);
+		height = (int) (Main.HEIGHT / 2.3);
+		
 		x=(int)( 885*scale);
 		y=(int)( 464*scale);
 		moveTo = x;
@@ -92,9 +98,9 @@ public class Blacke extends BasicGame implements MouseListener {
     	//Если активен флаг на движение рисуем анимацию, иначе статичный спрайт
     	
     	if(isItMove == true) {
-    	currentMove.draw(x,y);
+    	currentMove.draw(x,y,width,height);
     	} else {
-    		ggImage.draw(x,y);
+    		ggImage.draw(x,y,width,height);
     	}
     }
     @Override
