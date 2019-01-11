@@ -2,6 +2,7 @@ package Game.Core.UI.GG;
 
 import java.util.concurrent.TimeUnit;
 
+import Game.Core.Main;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 
