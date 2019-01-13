@@ -13,7 +13,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Blacke extends BasicGame implements MouseListener {
 	
-private float scale = (float)0.71;
+private float scale = (float)0.7115;
 	
 	private Image  ggImage; // Спрайт ГГ в положении стоя
 	
@@ -39,8 +39,6 @@ private float scale = (float)0.71;
 		super("GG");
 		this.gameContainer=gameContainer;
 		
-		width = (int) (Main.WIDTH / 9.1);
-		height = (int) (Main.HEIGHT / 2.3);
 		
 		x=(int)( 885*scale);
 		y=(int)( 464*scale);
@@ -74,8 +72,8 @@ private float scale = (float)0.71;
 	    	    
 	    	    //Передаем в анимацию массив изображений, задержку переключения, флаг для включения анимации
 	    	    
-	    	    left= new Animation(playerLeft,300, true);
-	    	    right= new Animation(playerRight,300, true);
+	    	    left= new Animation(playerLeft,350, true);
+	    	    right= new Animation(playerRight,350, true);
 	    	    currentMove= left;
 			
 		    
@@ -103,9 +101,9 @@ private float scale = (float)0.71;
     	//Если активен флаг на движение рисуем анимацию, иначе статичный спрайт
     	
     	if(isItMove == true) {
-    	currentMove.draw(x,y,width,height);
+    	currentMove.draw(x,y);
     	} else {
-    		ggImage.draw(x,y,width,height);
+    		ggImage.draw(x,y);
     	}
     }
     @Override
