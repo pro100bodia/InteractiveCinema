@@ -8,8 +8,16 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 public final class Main extends StateBasedGame {
+<<<<<<< HEAD
     public final static int FIRST_START=-1, MENU=0, NEWGAME=1, HOUSE = 2, STREET = 3, BEDROOM = 4, PARK = 5;
     public static final int WIDTH = 1366, HEIGHT = 768;
+||||||| merged common ancestors
+    public final static int FIRST_START=-1, MENU=0, NEWGAME=1, HOUSE = 2, STREET = 3, BEDROOM = 4;
+    private static int width, height;
+=======
+    public final static int FIRST_START=-1, MENU=0, NEWGAME=1, HOUSE = 2, STREET = 3, BEDROOM = 4;
+    public static int WIDTH = 1366, HEIGHT = 768;
+>>>>>>> GGHouse
     private static GameSettings settings;
 
     private Main(String name) {
@@ -31,7 +39,13 @@ public final class Main extends StateBasedGame {
         try{
             appc = new AppGameContainer(new Main("GAME"));
 
+<<<<<<< HEAD
             appc.setDisplayMode(WIDTH, HEIGHT, settings.isFullscreen());
+||||||| merged common ancestors
+            appc.setDisplayMode(1366, 768 ,settings.isFullscreen());
+=======
+            appc.setDisplayMode(WIDTH, HEIGHT ,settings.isFullscreen());
+>>>>>>> GGHouse
             appc.setTargetFrameRate(60);
             appc.start();
 
