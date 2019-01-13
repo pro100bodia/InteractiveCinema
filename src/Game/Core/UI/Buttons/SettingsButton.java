@@ -24,7 +24,7 @@ public class SettingsButton extends Button {
         super.onClick();
         try {
 
-            settingsMenu = new Settings(container,new Image("/src/Game/res/img/UI/settings.png"),283,20);
+            settingsMenu = new Settings(container,new Image("/src/Game/res/img/UI/settings2.png"),283,20);
             drawMenu=true;
         } catch (SlickException e) {
             e.printStackTrace();

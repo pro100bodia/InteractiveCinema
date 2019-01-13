@@ -43,8 +43,8 @@ public class Park extends GameState {
         height = 900;
         x = 0;
         image = new Image("Game/res/img/Park/background.png");
-        blacke = new Blacke(10,"", gameContainer);
-
+        blacke = new Blacke("GG", gameContainer);
+        blacke.setX(10);
         camera = new Camera(width, height, blacke);
 
     }
