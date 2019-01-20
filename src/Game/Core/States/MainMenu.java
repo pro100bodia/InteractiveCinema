@@ -4,6 +4,8 @@ package Game.Core.States;
 import Game.Core.GameState;
 import Game.Core.UI.Buttons.*;
 import Game.Core.UI.Properties.GameProperties;
+
+import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -37,14 +39,14 @@ public class MainMenu extends GameState {
         //propW = gameSettings.getScreenProportion();
 
         music = new Music("Game/res/Sounds/music.ogg");
-        background = new Image("Game/res/img/MainMenu/bar.png");
+        background = new Image("Game/res/img/MainMenu/bar.png").getScaledCopy(1366, 766);
         //exit = new ExitButton(gameContainer,new Image("Game/res/img/UI/exit.png"),1192,265);
-        exit = new ExitButton(gameContainer,new Image("Game/res/img/UI/exit.png"),1018,265);
+        exit = new ExitButton(gameContainer,new Image("Game/res/img/UI/exit.png").getScaledCopy(47, 350),946,200);
 
-        newGame = new ChangeStateButton(gameContainer, new Image("Game/res/img/UI/mainButton.png"),474,256,2,"newGame",stateBasedGame,resourceBundle);
-        settingsB = new SettingsButton(gameContainer,new Image("Game/res/img/UI/mainButton.png"),600,256,"settings",resourceBundle);
-        loadGame = new Button(gameContainer, new Image("Game/res/img/UI/mainButton.png"),726,256,"loadGame",resourceBundle);
-        screenProportion(gameContainer);
+        newGame = new ChangeStateButton(gameContainer, new Image("Game/res/img/UI/mainButton.png").getScaledCopy(103,125),550,275,2,"newGame",stateBasedGame,resourceBundle);
+        settingsB = new SettingsButton(gameContainer,new Image("Game/res/img/UI/mainButton.png").getScaledCopy(103,125),653,275,"settings",resourceBundle);
+        loadGame = new Button(gameContainer, new Image("Game/res/img/UI/mainButton.png").getScaledCopy(103,125),756,275,"loadGame",resourceBundle);
+       // screenProportion(gameContainer);
         music.play();
         
 
@@ -53,9 +55,10 @@ public class MainMenu extends GameState {
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
 
-        graphics.scale(propW,propH);// масштабируем изображение к размеру экрана
+       // graphics.scale(propW,propH);// масштабируем изображение к размеру экрана
         graphics.drawImage(background,0,0);
-        graphics.scale(1/propW,1/propH);// для всех остальных элементов возращаем стандартный масштаб
+       // graphics.scale(1/propW,1/propH);// для всех остальных элементов возращаем стандартный масштаб
+        graphics.drawString(Mouse.getX()+"      "+Mouse.getY(),20,100);
         super.render(gameContainer,stateBasedGame,graphics);
         if(settingsB.getDrawMenu()){
             newGame.setInvisible();

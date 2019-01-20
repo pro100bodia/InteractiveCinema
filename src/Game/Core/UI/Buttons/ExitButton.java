@@ -11,7 +11,7 @@ public class ExitButton extends Button {
         super(container, image, x, y);
         this.image = image;
         try {
-            focusImage = new Image("/src/Game/res/img/UI/exitOnFocus.png");
+            focusImage = new Image("/src/Game/res/img/UI/exitOnFocus.png").getScaledCopy(50, 350);
         } catch (SlickException e) {
             e.printStackTrace();
         }

@@ -35,7 +35,7 @@ public class Button extends MouseOverArea implements ButtonsAndControls {
         this.scaley=0;
         try {
             sound=  new Sound("/src/Game/res/Sounds/buttonFocus.ogg");
-            focusImage = new Image("/src/Game/res/img/UI/mainButtonOnFocus.png");
+            focusImage = new Image("/src/Game/res/img/UI/mainButtonOnFocus.png").getScaledCopy(103,125);
         } catch (SlickException e) {
             e.printStackTrace();
         }
