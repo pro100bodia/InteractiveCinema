@@ -16,6 +16,7 @@ public final class Main extends StateBasedGame {
 
     private Main(String name) {
         super("GAME");
+    
         this.addState(new FirstStart(FIRST_START));
         this.addState(new MainMenu(MENU));
         this.addState(new Game(NEWGAME));
