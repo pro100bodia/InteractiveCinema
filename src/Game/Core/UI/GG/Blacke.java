@@ -25,15 +25,15 @@ private float scale = (float)0.7115;
 	
 	private int width, height;
 	
-	GameContainer gameContainer;
+	private GameContainer gameContainer;
 	
-	SpriteSheet  moveToLeft; // Атлас движений героя влево
-	SpriteSheet  moveToRight; // Атлас движений героя вправо
+	private SpriteSheet  moveToLeft; // Атлас движений героя влево
+	private SpriteSheet  moveToRight; // Атлас движений героя вправо
 	
-	Image[] playerLeft = new Image[6] ; //Массив для хранения изображений с атласа для анимации движения влево
-	Image[] playerRight = new Image[6];//Массив для хранения изображений с атласа для анимации движения вправо
+	private Image[] playerLeft = new Image[6] ; //Массив для хранения изображений с атласа для анимации движения влево
+	private Image[] playerRight = new Image[6];//Массив для хранения изображений с атласа для анимации движения вправо
 
-	Animation left,right, currentMove; // Объект для анимации
+	private Animation left,right, currentMove; // Объект для анимации
 	
 	public Blacke(String title, GameContainer gameContainer) {
 		super("GG");

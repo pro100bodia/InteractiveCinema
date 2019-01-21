@@ -18,8 +18,15 @@ public class MainMenu extends GameState {
     private Button newGame, loadGame, exit;
     private SettingsButton settingsB;
     private Music music;
+    private boolean musicPlaying = false;
     private GameProperties properties;
     private  float propW, propH, bW;
+    
+    private Image [] fire = new Image[9];
+    private Image [] spark = new Image[10];
+    
+    private Animation fireAnimation;
+    private Animation sparkAnimation;
 
 
     public MainMenu(int menu) {
@@ -47,18 +54,46 @@ public class MainMenu extends GameState {
         settingsB = new SettingsButton(gameContainer,new Image("Game/res/img/UI/mainButton.png").getScaledCopy(103,125),653,275,"settings",resourceBundle);
         loadGame = new Button(gameContainer, new Image("Game/res/img/UI/mainButton.png").getScaledCopy(103,125),756,275,"loadGame",resourceBundle);
        // screenProportion(gameContainer);
-        music.play();
+       // music.play();
         
+        fire[0] = new Image("Game/res/img/MainMenu/fire1.png").getScaledCopy(280, 40);
+        fire[1] = new Image("Game/res/img/MainMenu/fire2.png").getScaledCopy(280, 40);
+        fire[2] = new Image("Game/res/img/MainMenu/fire3.png").getScaledCopy(280, 40);
+        fire[3] = new Image("Game/res/img/MainMenu/fire4.png").getScaledCopy(280, 40);
+        fire[4] = new Image("Game/res/img/MainMenu/fire5.png").getScaledCopy(280, 40);
+        fire[5] = new Image("Game/res/img/MainMenu/fire6.png").getScaledCopy(280, 40);
+        fire[6] = new Image("Game/res/img/MainMenu/fire7.png").getScaledCopy(280, 40);
+        fire[7] = new Image("Game/res/img/MainMenu/fire8.png").getScaledCopy(280, 40);
+        fire[8] = new Image("Game/res/img/MainMenu/fire9.png").getScaledCopy(280, 40);
+        
+        spark[0] = new Image("Game/res/img/MainMenu/spark1.png").getScaledCopy(280, 40);
+        spark[1] = new Image("Game/res/img/MainMenu/spark2.png").getScaledCopy(280, 40);
+        spark[2] = new Image("Game/res/img/MainMenu/spark3.png").getScaledCopy(280, 40);
+        spark[3] = new Image("Game/res/img/MainMenu/spark4.png").getScaledCopy(280, 40);
+        spark[4] = new Image("Game/res/img/MainMenu/spark5.png").getScaledCopy(280, 40);
+        spark[5] = new Image("Game/res/img/MainMenu/spark6.png").getScaledCopy(280, 40);
+        spark[6] = new Image("Game/res/img/MainMenu/spark7.png").getScaledCopy(280, 40);
+        spark[7] = new Image("Game/res/img/MainMenu/spark8.png").getScaledCopy(280, 40);
+        spark[8] = new Image("Game/res/img/MainMenu/spark9.png").getScaledCopy(280, 40);
+        spark[9] = new Image("Game/res/img/MainMenu/spark10.png").getScaledCopy(280, 40);
+       
+        
+        fireAnimation = new Animation(fire,300, true);
+        sparkAnimation = new Animation(spark,300, true);
 
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
 
+    	
+    	
        // graphics.scale(propW,propH);// масштабируем изображение к размеру экрана
         graphics.drawImage(background,0,0);
        // graphics.scale(1/propW,1/propH);// для всех остальных элементов возращаем стандартный масштаб
         graphics.drawString(Mouse.getX()+"      "+Mouse.getY(),20,100);
+        fireAnimation.draw(566,430);
+        sparkAnimation.draw(566,430);
         super.render(gameContainer,stateBasedGame,graphics);
         if(settingsB.getDrawMenu()){
             newGame.setInvisible();
@@ -83,7 +118,12 @@ public class MainMenu extends GameState {
 
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
-
+    
+    	if (stateBasedGame.getCurrentStateID() == 0 && !musicPlaying ) {
+    				musicPlaying = true;
+    				music.play();
+    				
+    			}
 
     }
 

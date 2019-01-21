@@ -19,6 +19,9 @@ public class HouseGG extends GameState implements MouseListener {
     private Input input;
     
     private Inventory it ;
+    
+    private Music music;
+    private boolean musicPlaying = false;
 
 
     public HouseGG (int menu) {
@@ -36,7 +39,10 @@ public class HouseGG extends GameState implements MouseListener {
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         super.init(gameContainer,stateBasedGame);
         
+        music = new Music("Game/res/Sounds/Gatari.ogg");
+        
         it = new Inventory(gameContainer,50,50);
+        
         background = new Image("Game/res/img/2.png").getScaledCopy((int)(1920*scale), (int)(1080*scale));
         // toTheStreet = new ChangeStateDoor(gameContainer,new Image("Game/res/img/UI/HouseGGDoor.png").getScaledCopy(110,400),new Image("/src/Game/res/img/UI/HouseGGDoorActive1.png").getScaledCopy(125,397),210,255,3,"toTheStreet",stateBasedGame,resourceBundle);
         toTheStreet = new ChangeStateDoor(gameContainer,new Image("Game/res/img/UI/HouseGGDoor.png").getScaledCopy(109,403),new Image("/src/Game/res/img/UI/HouseGGDoorActive1.png").getScaledCopy((int)(176*scale),(int)(558*scale)),(int)(295*scale),(int)(358*scale),3,"toTheStreet",stateBasedGame,resourceBundle);
@@ -65,6 +71,13 @@ public class HouseGG extends GameState implements MouseListener {
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
 
         blacke.update(gameContainer, i);
+        
+        if (stateBasedGame.getCurrentStateID() == 2 && !musicPlaying ) {
+			musicPlaying = true;
+			music.play();
+			
+		}
+        
         callInvetory(input,stateBasedGame, it);
         if(blacke.getX()<=(int)(421*scale)) {
 			blacke.setX(blacke.getX()+5);

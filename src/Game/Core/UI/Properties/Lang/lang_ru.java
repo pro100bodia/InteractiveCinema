@@ -5,7 +5,7 @@ import java.util.ListResourceBundle;
 public class lang_ru extends ListResourceBundle {
 
     private static final  String[][]contents={
-            {"newGame","New gameRU"},
+            {"newGame","Новая Игра"},
             {"continueGame","Продолжить игру"},
             {"loadGame","Загрузить"},
             {"settings","Настройки"},
