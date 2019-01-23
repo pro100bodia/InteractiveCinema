@@ -38,6 +38,7 @@ public final class Main extends StateBasedGame {
 
 
             appc.setTargetFrameRate(60);
+            appc.setAlwaysRender(true);
             appc.start();
 
 

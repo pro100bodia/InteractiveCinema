@@ -7,8 +7,13 @@ import Game.Core.UI.Properties.GameProperties;
 
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
+import org.newdawn.slick.particles.ConfigurableEmitter;
+import org.newdawn.slick.particles.ParticleEmitter;
+import org.newdawn.slick.particles.ParticleIO;
+import org.newdawn.slick.particles.ParticleSystem;
 import org.newdawn.slick.state.StateBasedGame;
 
+import java.io.File;
 import java.io.IOException;
 
 public class MainMenu extends GameState {
@@ -26,8 +31,12 @@ public class MainMenu extends GameState {
     private Image [] spark = new Image[10];
     
     private Animation fireAnimation;
-    private Animation sparkAnimation;
-
+    private Animation sparkAnimation; 
+    
+	private ParticleSystem sparklesEffect;
+	
+    private ParticleSystem system;
+	private ConfigurableEmitter emitter;
 
     public MainMenu(int menu) {
         super(menu);
@@ -81,6 +90,7 @@ public class MainMenu extends GameState {
         fireAnimation = new Animation(fire,300, true);
         sparkAnimation = new Animation(spark,300, true);
 
+        initParticleSystems();
     }
 
     @Override
@@ -92,8 +102,14 @@ public class MainMenu extends GameState {
         graphics.drawImage(background,0,0);
        // graphics.scale(1/propW,1/propH);// для всех остальных элементов возращаем стандартный масштаб
         graphics.drawString(Mouse.getX()+"      "+Mouse.getY(),20,100);
-        fireAnimation.draw(566,430);
-        sparkAnimation.draw(566,430);
+        graphics.setColor(Color.black);
+        
+        graphics.fillRect(566, 420, 280, 40);
+        graphics.setColor(Color.white);
+        system.render();
+       // sparklesEffect.render(566, 460);
+        //gameContainer.fireAnimation.draw(566,430);
+        //sparkAnimation.draw(566,430);
         super.render(gameContainer,stateBasedGame,graphics);
         if(settingsB.getDrawMenu()){
             newGame.setInvisible();
@@ -118,13 +134,15 @@ public class MainMenu extends GameState {
 
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
-    
+    	
+    	system.update(i);
     	if (stateBasedGame.getCurrentStateID() == 0 && !musicPlaying ) {
     				musicPlaying = true;
     				music.play();
     				
     			}
 
+        //sparklesEffect.update(i);
     }
 
     protected void screenProportion( GameContainer gameContainer){
@@ -135,6 +153,18 @@ public class MainMenu extends GameState {
             bh = 2448;
             propW = w/bw;
             propH=h/bh;
-
     }
+    
+	private void initParticleSystems() {
+		try {
+			Image image = new Image("Game/res/img/test_particle.png", false);
+			system = new ParticleSystem(image,1500);
+	
+			emitter = ParticleIO.loadEmitter("Game/res/img/test_emitter.xml");
+			emitter.setPosition(710, 458);
+			system.addEmitter(emitter);
+		} catch (IOException | RuntimeException | SlickException e) {
+			System.out.println("ресурсы повреждены: отсутствует эмиттер частиц для искр в камине");
+		}
+	}
 }

@@ -5,8 +5,12 @@ import Game.Core.UI.Buttons.ChangeStateButton;
 import Game.Core.UI.Properties.GameProperties;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
+import org.newdawn.slick.particles.ConfigurableEmitter;
+import org.newdawn.slick.particles.ParticleIO;
+import org.newdawn.slick.particles.ParticleSystem;
 import org.newdawn.slick.state.StateBasedGame;
 
+import java.io.File;
 import java.io.IOException;
 
 public class FirstStart extends GameState {
@@ -32,6 +36,9 @@ public class FirstStart extends GameState {
              за пределами экрана в точке 2142\1092
 
         */
+    
+        
+        
         startButton= new ChangeStateButton(gameContainer, 892,338, new Image("Game/res/img/FirstStart/switch.png"),new Image("Game/res/img/FirstStart/switchFocused.png"),stateBasedGame,0);
 
 
@@ -40,10 +47,11 @@ public class FirstStart extends GameState {
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         super.render(gameContainer, stateBasedGame, graphics);
-        graphics.scale(propW,propH);
-        graphics.drawImage(background,0,0);
-         graphics.scale(1/propW,1/propH);
+       // graphics.scale(propW,propH);
+      //  graphics.drawImage(background,0,0);
+        // graphics.scale(1/propW,1/propH);
         startButton.render(gameContainer,graphics);
+       
 
         graphics.drawString(Mouse.getX()+"      "+Mouse.getY(),20,100);
         if(Mouse.isButtonDown(Input.MOUSE_LEFT_BUTTON))
@@ -55,6 +63,7 @@ public class FirstStart extends GameState {
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
         super.update(gameContainer, stateBasedGame, i);
+        
     }
     protected void screenProportion( GameContainer gameContainer){
         float bW, bH;
