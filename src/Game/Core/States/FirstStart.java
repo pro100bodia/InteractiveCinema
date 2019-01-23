@@ -26,7 +26,7 @@ public class FirstStart extends GameState {
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         super.init(gameContainer, stateBasedGame);
-        background = new Image("Game/res/img/FirstStart/bar_0%.png");
+        background = new Image("Game/res/img/FirstStart/bar_0%.png").getScaledCopy(1366, 768);
         screenProportion(gameContainer);
        //startButton= new ChangeStateButton(gameContainer,2142,1092, new Image("Game/res/img/FirstStart/switch.png"),new Image("Game/res/img/FirstStart/switchFocused.png"),stateBasedGame,0,propW);
         //  startButton= new ChangeStateButton(gameContainer,(int)(2142*propW),(int) (1092*propH), new Image("Game/res/img/FirstStart/switch.png"),new Image("Game/res/img/FirstStart/switchFocused.png"),stateBasedGame,0,propW,propH);
@@ -39,7 +39,7 @@ public class FirstStart extends GameState {
     
         
         
-        startButton= new ChangeStateButton(gameContainer, 892,338, new Image("Game/res/img/FirstStart/switch.png"),new Image("Game/res/img/FirstStart/switchFocused.png"),stateBasedGame,0);
+        startButton= new ChangeStateButton(gameContainer, 820,290, new Image("Game/res/img/FirstStart/switch.png"),new Image("Game/res/img/FirstStart/switchFocused.png"),stateBasedGame,0);
 
 
     }
@@ -47,9 +47,9 @@ public class FirstStart extends GameState {
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         super.render(gameContainer, stateBasedGame, graphics);
-       // graphics.scale(propW,propH);
-      //  graphics.drawImage(background,0,0);
-        // graphics.scale(1/propW,1/propH);
+       
+        graphics.drawImage(background,0,0);
+        
         startButton.render(gameContainer,graphics);
        
 
