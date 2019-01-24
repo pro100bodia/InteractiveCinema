@@ -18,6 +18,9 @@ public class FirstStart extends GameState {
     private ChangeStateButton startButton;
     private GameProperties properties;
     private  float propW, propH;
+    private Image test;
+    private float alpha = 0;
+    private boolean upAndDown = false;
 
     public FirstStart(int i) {
         super(i);
@@ -37,6 +40,7 @@ public class FirstStart extends GameState {
 
         */
     
+        test= new Image("Game/res/img/FirstStart/switch.png");
         
         
         startButton= new ChangeStateButton(gameContainer, 820,290, new Image("Game/res/img/FirstStart/switch.png"),new Image("Game/res/img/FirstStart/switchFocused.png"),stateBasedGame,0);
@@ -49,7 +53,7 @@ public class FirstStart extends GameState {
         super.render(gameContainer, stateBasedGame, graphics);
        
         graphics.drawImage(background,0,0);
-        
+        graphics.drawImage(test,820,290);
         startButton.render(gameContainer,graphics);
        
 
@@ -63,6 +67,23 @@ public class FirstStart extends GameState {
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
         super.update(gameContainer, stateBasedGame, i);
+        
+        //Маняем альфу делая прозрачной кнопку, создается эффект мигания
+        if(alpha < 1 && upAndDown == false) {
+        alpha += 0.06f;
+        test.setAlpha(alpha);
+        	if (alpha >= 1) {
+        		upAndDown = true;
+        	}
+        } 
+        
+        if(alpha > 0 && upAndDown == true) {
+            alpha -= 0.06f;
+            test.setAlpha(alpha);
+	            if (alpha <= 0) {
+	        		upAndDown = false;
+	        	}
+            } 
         
     }
     protected void screenProportion( GameContainer gameContainer){
