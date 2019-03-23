@@ -158,7 +158,10 @@ private float scale = (float)0.7115;
     public void setX(float x) {
     	this.x = x;
     }
-    
+    public void setY(float y) {
+    	this.y = y;
+    }
+
     public void setIsItMove (boolean m) {
     	isItMove = m;
     }
