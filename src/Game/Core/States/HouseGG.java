@@ -87,23 +87,23 @@ public class HouseGG extends GameState implements MouseListener {
 			music.play();
 			
 		}
-        
+
         callInvetory(input,stateBasedGame, it);
         if(blacke.getX()<=(int)(421*scale)) {
 			blacke.setX(blacke.getX()+5);
 			blacke.moveTo(blacke.getX());
 			blacke.setIsItMove(false);
-		
-			
-			
+
+
+
 		}
 		if(blacke.getX()+119 >=(int)(1476*scale)) {
-			
+
 			blacke.setX(blacke.getX()-5);
 			blacke.moveTo(blacke.getX());
 			blacke.setIsItMove(false);
-			
-			
+
+
 		}
 		it.tick();
     }
@@ -112,7 +112,7 @@ public class HouseGG extends GameState implements MouseListener {
 
     @Override
     public void mouseClicked(int button, int x, int y, int clickCount) {
-    	if(!Inventory.isOpen) {
+        if(!Inventory.isOpen) {
     	if(x > blacke.getX() + 119 || x<blacke.getX())
         	blacke.moveTo(x);
 
@@ -129,11 +129,11 @@ public class HouseGG extends GameState implements MouseListener {
             }
     	}
     }
-    
+
     public void callInvetory(Input input, StateBasedGame stateBasedGame , Inventory invet) {
     	if(input.isKeyPressed(Input.KEY_TAB)) {
     		System.out.println("TAB pressed");
-    		
+
     		if(invet != null && invet.isOpen) {
     			invet.setIsOpen(false);
     		} else {
@@ -146,6 +146,7 @@ public class HouseGG extends GameState implements MouseListener {
     		System.out.println("ESQ pressed");
     		if(invet != null && invet.isOpen) {
     			invet.setIsOpen(false);
+
     		}
     	}
     

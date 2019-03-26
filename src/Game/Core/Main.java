@@ -16,7 +16,7 @@ public final class Main extends StateBasedGame {
 
     private Main(String name) {
         super("GAME");
-    
+
         this.addState(new FirstStart(FIRST_START));
         this.addState(new MainMenu(MENU));
         this.addState(new Game(NEWGAME));
@@ -24,11 +24,12 @@ public final class Main extends StateBasedGame {
         this.addState(new StreetDummy(STREET));
         this.addState(new Bedroom(BEDROOM));
         this.addState(new Park(PARK));
-        this.enterState(-1);//временно установлено статически
+        this.enterState(2);//временно установлено статически
 
 }
 
     public static void main(String[] args) {
+        System.out.println(System.getProperty("java.library.path"));
         settings=new GameSettings();
         AppGameContainer appc;
         try{

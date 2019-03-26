@@ -18,10 +18,7 @@
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="inheritedJdk" />
-    <orderEntry type="library" name="Slick2D" level="project" />
-    <orderEntry type="library" name="jars" level="project" />
-    <orderEntry type="library" name="native" level="project" />
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library name="ibxm.jar">
         <CLASSES>
           <root url="file://C:/Program Files/Java/jdk-9.0.1/lib/ibxm.jar" />
@@ -30,7 +27,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library name="slick.jar">
         <CLASSES>
           <root url="file://C:/Program Files/Java/jdk-9.0.1/lib/slick.jar" />
@@ -39,7 +36,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library name="lwjgl.jar">
         <CLASSES>
           <root url="file://C:/Program Files/Java/jdk-9.0.1/lib/lwjgl.jar" />
@@ -48,7 +45,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library name="jorbis-0.0.15.jar">
         <CLASSES>
           <root url="file://C:/Program Files/Java/jdk-9.0.1/lib/jorbis-0.0.15.jar" />
@@ -57,7 +54,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library name="jogg-0.0.7.jar">
         <CLASSES>
           <root url="file://C:/Program Files/Java/jdk-9.0.1/lib/jogg-0.0.7.jar" />
@@ -66,5 +63,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" exported="" name="ibxm" level="project" />
+    <orderEntry type="library" exported="" name="jinput" level="project" />
   </component>
 </module>
