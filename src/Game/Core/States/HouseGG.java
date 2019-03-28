@@ -1,26 +1,18 @@
 package Game.Core.States;
 
-import Game.Core.GameSettings;
-import Game.Core.GameState;
 import Game.Core.UI.Buttons.*;
-import Game.Core.UI.GG.Blacke;
 import Game.Core.UI.Invetory.Inventory;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class HouseGG extends GameState implements MouseListener {
-
-	private float scale = (float)0.7115;
+public class HouseGG extends TypicalState implements MouseListener {
     private final int state;
-    private Image background, table, chair;
+    private Image table, chair;
     private ChangeStateDoor toTheBedroom, toTheStreet;
-    private Blacke blacke;
-    private Input input;
     private Desk desk;
     private Phone phone;
-    private Inventory it ;
-    
+
     private Music music;
     private boolean musicPlaying = false;
 
@@ -42,14 +34,10 @@ public class HouseGG extends GameState implements MouseListener {
         
         music = new Music("Game/res/Sounds/Gatari.ogg");
         
-        it = new Inventory(gameContainer,50,50);
-        
         background = new Image("Game/res/img/GGHouse/HouseGG.png").getScaledCopy((int)(1920*scale), (int)(1080*scale));
         toTheStreet = new ChangeStateDoor(gameContainer,new Image("Game/res/img/GGHouse/DoorLeftPassive.png").getScaledCopy(100,375),new Image("Game/res/img/GGHouse/DoorLeftActive.png").getScaledCopy(100,375),(int)(480*scale),(int)(200*scale),3,"toTheStreet",stateBasedGame,resourceBundle);
         toTheBedroom = new ChangeStateDoor(gameContainer,new Image("Game/res/img/GGHouse/DoorRightPassive.png").getScaledCopy(100,360),new Image("Game/res/img/GGHouse/DoorRightActive.png").getScaledCopy(100,360),(int)(1320*scale),(int)(200*scale),4,"toTheBedroom",stateBasedGame,resourceBundle);
-        blacke = new Blacke("GG", gameContainer);
-        input = gameContainer.getInput();
-        
+
         table = new Image("Game/res/img/GGHouse/cofee_table.png").getScaledCopy(0.38f);
         chair = new Image("Game/res/img/GGHouse/chair.png");
         desk = new Desk(gameContainer, new Image("Game/res/img/GGHouse/desk_off.png").getScaledCopy(0.4f),  new Image("Game/res/img/GGHouse/desk_on.png").getScaledCopy(0.4f), 130, 50);
@@ -60,35 +48,36 @@ public class HouseGG extends GameState implements MouseListener {
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         super.render(gameContainer,stateBasedGame,graphics);
+
         graphics.drawImage(background,0,0);
-        
 
         toTheStreet.setVisible();
         toTheStreet.render(gameContainer,graphics);
         toTheBedroom.setVisible();
         toTheBedroom.render(gameContainer,graphics);
+
         blacke.render(gameContainer,graphics);
+
         graphics.drawImage(table,875,350);
-       
+
         desk.render(gameContainer,graphics);
         phone.render(gameContainer,graphics);
+
         if(it!=null) {
-        it.render(gameContainer, graphics);
+            it.render(gameContainer, graphics);
         }
     }
 
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
+        super.update(gameContainer, stateBasedGame, i);
 
-        blacke.update(gameContainer, i);
-        
         if (stateBasedGame.getCurrentStateID() == 2 && !musicPlaying ) {
 			musicPlaying = true;
 			music.play();
 			
 		}
 
-        callInvetory(input,stateBasedGame, it);
         if(blacke.getX()<=(int)(421*scale)) {
 			blacke.setX(blacke.getX()+5);
 			blacke.moveTo(blacke.getX());
@@ -105,7 +94,7 @@ public class HouseGG extends GameState implements MouseListener {
 
 
 		}
-		it.tick();
+//		it.tick();
     }
 
 
@@ -129,28 +118,4 @@ public class HouseGG extends GameState implements MouseListener {
             }
     	}
     }
-
-    public void callInvetory(Input input, StateBasedGame stateBasedGame , Inventory invet) {
-    	if(input.isKeyPressed(Input.KEY_TAB)) {
-    		System.out.println("TAB pressed");
-
-    		if(invet != null && invet.isOpen) {
-    			invet.setIsOpen(false);
-    		} else {
-    			if(invet != null)
-    			invet.setIsOpen(true);
-    		}
-    	}
-    	
-    	if(input.isKeyPressed(Input.KEY_ESCAPE)) {
-    		System.out.println("ESQ pressed");
-    		if(invet != null && invet.isOpen) {
-    			invet.setIsOpen(false);
-
-    		}
-    	}
-    
-    }
-    
-    
 }

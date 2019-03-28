@@ -20,7 +20,6 @@ public class ButtonNextTab extends MouseOverArea {
 	@Override
 	public void render(GUIContext container, Graphics g)  {
 		if(isMouseOver()) {
-	
 			g.drawImage(state2, super.getX(), super.getY());
 		} else {
 			g.drawImage(state1, super.getX(), super.getY());

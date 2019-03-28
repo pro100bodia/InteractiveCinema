@@ -17,11 +17,13 @@ public class lang_ru extends ListResourceBundle {
             {"back","Go Back ru"},
             {"toTheStreet","To The Street"},
             {"toTheBedroom","To The Bedroom"},
+            {"toTheLivingRoom","To The Living Room"},
             {"street", "Street"},
             {"bedroom","Bedroom"},
             {"askExit","Do you want to leave the game?"},
             {"agree","Yes, I am sure"},
-            {"disagree","No, I was wrong"}
+            {"disagree","No, I was wrong"},
+            {"Park","Park"}
     };
 
 
