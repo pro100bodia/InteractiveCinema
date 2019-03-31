@@ -114,14 +114,12 @@ public class Notepad extends AbstractComponent implements MouseListener {
             currentFrame.draw(x + 300, y + 20);
             g.setColor(Color.red);
             for(Task task : tasks) {
-                System.out.println("TASK: name: " + task.getName() + " x: " + task.getX() + " y: " + task.getY());
                 g.drawString(task.getName(), task.getX(), task.getY());
             }
         }
     }
 
     public void turnTo(int desired){
-        System.out.println("turn to page #" + desired);
         this.desired = desired;
         int i;
 

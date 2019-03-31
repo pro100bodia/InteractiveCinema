@@ -24,7 +24,7 @@ public final class Main extends StateBasedGame {
         this.addState(new StreetDummy(STREET));
         this.addState(new Bedroom(BEDROOM));
         this.addState(new Park(PARK));
-        this.enterState(2);//временно установлено статически
+        this.enterState(-1);//временно установлено статически
 
 }
 
